@@ -12,6 +12,10 @@ const pacingP = document.querySelector("#pacingP");
 const feelingsG = document.querySelector("#feelingsG");
 const feelingsB = document.querySelector("#feelingsB");
 
+document.querySelector("#mangaa").addEventListener("click", function(e) {
+    e.preventDefault();
+    getManga();
+})
 
 document.querySelector("#questionnaire").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -33,7 +37,9 @@ document.querySelector("#questionnaire").addEventListener("submit", function(e) 
     if(feelingsB.checked) {
         count += 200;
     }
+    //checkMangaExists(count);
     const chosenOpt = count;
+    count = 0;
     let chosenName;
     switch(chosenOpt){
         case 111:
@@ -60,9 +66,20 @@ document.querySelector("#questionnaire").addEventListener("submit", function(e) 
         case 222:
             chosenName = "Monster";
             break;
+        case 500:
+            chosenName = "Duplicate";
+            break;
         default:
             chosenName = "Not Found - Please fill out all fields";
             break;
+    }
+    if (chosenName == "Duplicate") {
+        alert(`This manga already exists in your database!`);
+        return;
+    }
+    if (chosenName == "Not Found - Please fill out all fields") {
+        alert(`Not Found - Please fill out all fields`);
+        return;
     }
     const data = {
         name : chosenName,
@@ -70,7 +87,6 @@ document.querySelector("#questionnaire").addEventListener("submit", function(e) 
         rating : 0,
         opt : chosenOpt
     }
-    count = 0;
     createMangaQ(data);
 })
 
@@ -92,52 +108,52 @@ const renderManga = manga => {
     mangaColumn.classList.add("col");
 
     const mangaCard = document.createElement("div");
-    switch(manga.opt){
-        case 111:
-            //mangaCard.style("background: url(manga.jpg);");
-            break;
-        case 211:
-            
-            break;
-        case 121:
-            
-            break;
-        case 112:
-            
-            break;
-        case 221:
-            
-            break;
-        case 122:
-            
-            break;
-        case 212:
-            
-            break;
-        case 222:
-            
-            break;
-        default:
-            break;
-    }
+    
     mangaCard.classList.add("card");
     mangaColumn.appendChild(mangaCard);
 
     const newManga = document.createElement("div");
     newManga.classList.add("card-body");
-
+    switch(manga.opt){
+        case 111:
+            newManga.id = "mangaBackground111";
+            break;
+        case 211:
+            newManga.id = "mangaBackground211";
+            break;
+        case 121:
+            newManga.id = "mangaBackground121";
+            break;
+        case 112:
+            newManga.id = "mangaBackground112";
+            break;
+        case 221:
+            newManga.id = "mangaBackground221";
+            break;
+        case 122:
+            newManga.id = "mangaBackground122";
+            break;
+        case 212:
+            newManga.id = "mangaBackground212";
+            break;
+        case 222:
+            newManga.id = "mangaBackground222";
+            break;
+        default:
+            break;
+    }
     const mangaName = document.createElement("h3");
     mangaName.innerText = manga.name;
     mangaName.classList.add("card-title");
     newManga.appendChild(mangaName);
 
-    const mangaRead = document.createElement("p");
-    mangaRead.innerText = manga.readStatus;
+    const mangaRead = document.createElement("h5");
+    mangaRead.innerText = `Read Status: ${manga.readStatus}`;
     mangaRead.classList.add("card-text");
     newManga.appendChild(mangaRead);
 
-    const mangaRating = document.createElement("p");
-    mangaRating.innerText = manga.rating;
+    const mangaRating = document.createElement("h5");
+    mangaRating.innerText = `Personal Rating: ${manga.rating}`;
     mangaRating.classList.add("card-text");
     newManga.appendChild(mangaRating);
 
@@ -148,17 +164,24 @@ const renderManga = manga => {
     readLabel.innerText = "Update Read Status: ";
     updateForm.appendChild(readLabel);
     const updateRead = document.createElement("input");
+    updateRead.type = "text";
+    updateRead.placeholder = "read/reading/not read";
     updateForm.appendChild(updateRead);
     const ratingLabel = document.createElement("p");
     ratingLabel.innerText = "Give New Rating: ";
     updateForm.appendChild(ratingLabel);
     const updateRating = document.createElement("input");
+    updateRating.type = "number";
+    updateRating.placeholder = "0-10";
+    updateRating.max = "10";
+    updateRating.min = "0";
     updateForm.appendChild(updateRating);
     // const updateOpt = document.createElement("input");
     // updateForm.appendChild(updateOpt);
     const updateButton = document.createElement("button");
     updateButton.innerText = "UPDATE";
     updateButton.classList.add("btn", "btn-dark");
+    updateButton.id = "updateButton";
     updateButton.addEventListener("click", () => updateManga(manga.id, manga.name, updateRead, updateRating, manga.opt));
     newManga.appendChild(updateForm);
     newManga.appendChild(updateButton);
@@ -166,6 +189,7 @@ const renderManga = manga => {
     const deleteButton = document.createElement("button");
     deleteButton.innerText = "DELETE";
     deleteButton.classList.add("btn", "btn-dark");
+    deleteButton.id = "deleteButton";
     deleteButton.addEventListener("click", () => deleteManga(manga.id));
     newManga.appendChild(deleteButton);
 
@@ -189,6 +213,22 @@ const createMangaQ = (data) => {
         .then(res => {
             getManga();
             alert(`Your manga suggestion has arrived!`);
+        }).catch(err => {
+            alert(`This manga already exists in your database!`);
+            console.log(err);
+        });
+}
+
+const checkMangaExists = (num) => {
+    axios.get(`${baseURL}/getManga`)
+        .then(res => {
+            const manga = res.data;
+            manga.forEach(manga => {
+                if (manga.opt == num) {
+                    //count = 500;
+                    return;
+                }
+            });
         }).catch(err => console.log(err));
 }
 
