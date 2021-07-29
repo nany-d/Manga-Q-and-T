@@ -37,11 +37,6 @@ public class MangaController {
 		return services.getManga();
 	}
 
-	@GetMapping("/getMangaByName/{name}")
-	public List<Manga> getMangaByName(@PathVariable String name) {
-		return services.getMangaByName(name);
-	}
-
 	@PutMapping("/putManga/{id}")
 	public ResponseEntity<Manga> update(@PathVariable int id, @RequestBody Manga newManga) {
 		Manga body = this.services.update(id, newManga);

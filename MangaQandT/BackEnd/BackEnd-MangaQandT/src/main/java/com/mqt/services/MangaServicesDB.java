@@ -28,11 +28,6 @@ public class MangaServicesDB implements MangaServices {
 	}
 
 	@Override
-	public List<Manga> getMangaByName(String name) {
-		return this.repo.findByNameIgnoreCase(name);
-	}
-
-	@Override
 	public Manga update(int id, Manga newManga) {
 		Manga found = this.repo.findById(id).get();
 

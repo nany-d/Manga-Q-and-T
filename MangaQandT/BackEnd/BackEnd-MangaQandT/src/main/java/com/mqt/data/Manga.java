@@ -2,6 +2,7 @@ package com.mqt.data;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class Manga {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Column(name = "mangaName", unique = true)
 	private String name;
 	private String readStatus;
 	private int rating;
