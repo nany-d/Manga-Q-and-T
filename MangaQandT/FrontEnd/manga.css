@@ -1,0 +1,67 @@
+* {
+    font-family: arial;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px black;
+    color: white;
+}
+#mangaBackground111 {
+    margin: 5px;
+    background: url(images/fairytail.jpg);
+    background-size: cover;
+}
+#mangaBackground211 {
+    margin: 5px;
+    background: url(images/vinlandsaga.jpg);
+    background-size: cover;
+}
+#mangaBackground121 {
+    margin: 5px;
+    background: url(images/vagabond.jpg);
+    background-size: cover;
+}
+#mangaBackground112 {
+    margin: 5px;
+    background: url(images/lifeofahousehusband.jpg);
+    background-size: cover;
+}
+#mangaBackground221 {
+    margin: 5px;
+    background: url(images/berserk.jpg);
+    background-size: cover;
+}
+#mangaBackground122 {
+    margin: 5px;
+    background: url(images/deathnote.jpg);
+    background-size: cover;
+}
+#mangaBackground212 {
+    margin: 5px;
+    background: url(images/steinsgate.jpg);
+    background-size: cover;
+}
+#mangaBackground222 {
+    margin: 5px;
+    background: url(images/monster.jpg);
+    background-size: cover;
+}
+#updateButton{
+    margin: 2px;
+}
+#deleteButton{
+    margin: 2px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: lightgray;
+    text-shadow: none;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: lightgray;
+    text-shadow: none;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: lightgray;
+    text-shadow: none;
+  }

@@ -13,37 +13,39 @@
     crossorigin="anonymous">
     <link rel="stylesheet" href="manga.css">
 </head>
-<body class="container" style="background: url(manga.jpg);">
+<body class="container" style="background: url(manga.jpg); background-size: cover;">
     <main class="row">
-        <section class="col-3">
-            <div>
-                <h1> Manga Questionnaire and Tracker</h1>
+        <section class="col-5">
+            <div id="mangaa">
                 <br>
+                <h1>Manga Questionnaire and Tracker</h1>
                 <p>
                     Fill out the questionnaire to see what manga to read!
                 </p>
                 <p>
                     You can then keep track of what manga you've read and give them all ratings
                 </p>
+                <button type="submit" class="btn btn-dark">See all Manga</button>
+                <br>
             </div>
             <div id="mangaQuestionnaire">
                 <form id="questionnaire">
                     <br>
-                    <h3>What theme do you prefer?</h3>
+                    <h4>What theme do you prefer?</h4>
                     <label for="themeF" class="form-label">Fantasy</label>
                     <input id="themeF" type="radio" name="q1">
                     <br>
                     <label for="themeR" class="form-label">Real-life</label>
                     <input id="themeR" type="radio" name="q1">
                     <br>
-                    <h3>How do you like the pacing?</h3>
+                    <h4>How do you like the pacing?</h4>
                     <label for="pacingA" class="form-label">Fast paced Action</label>
                     <input id="pacingA" type="radio" name="q2">
                     <br>
                     <label for="pacingP" class="form-label">Slow but dense plot</label>
                     <input id="pacingP" type="radio" name="q2">
                     <br>
-                    <h3>How are you feeling?</h3>
+                    <h4>How are you feeling?</h4>
                     <label for="feelingsG" class="form-label">Happy</label>
                     <input id="feelingsG" type="radio" name="q3">
                     <br>
@@ -66,7 +68,7 @@
                 </form> -->
             </div>
         </section>
-        <section class="col-9">
+        <section class="col-7">
             <div id = mangaBase class="card-group row row-cols-3 g-4">
                 
             </div>
