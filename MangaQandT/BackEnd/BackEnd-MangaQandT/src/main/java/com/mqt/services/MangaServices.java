@@ -10,8 +10,6 @@ public interface MangaServices {
 
 	public List<Manga> getManga();
 
-	public List<Manga> getMangaByName(String name);
-
 	public Manga update(int id, Manga manga);
 
 	public String deleteManga(int id);

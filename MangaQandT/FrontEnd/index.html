@@ -4,33 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Manga Questionnaire</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
     integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"rel="nofollow" 
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" 
+    crossorigin="anonymous">
     <link rel="stylesheet" href="manga.css">
 </head>
-<body>
-    <main>
-        <div id="mangaQuestionnaire">
-            <form id="mangaForm">
-                <!-- <label for="optNumber">Option Number</label>
-                <input id="optNumber" type="number">
-                <button type="submit">Submit</button> -->
-                <label for="mangaName">Manga Name</label>
-                <input id="mangaName" type="text">
-                <label for="mangaRead">Read Status</label>
-                <input id="mangaRead" type="text">
-                <label for="mangaRating">Rating</label>
-                <input id="mangaRating" type="number">
-                <label for="mangaOpt">Option Number</label>
-                <input id="mangaOpt" type="number">
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        <div id = mangaBase>
-            
-        </div>
+<body class="container" style="background: url(manga.jpg);">
+    <main class="row">
+        <section class="col-3">
+            <div>
+                <h1> Manga Questionnaire and Tracker</h1>
+                <br>
+                <p>
+                    Fill out the questionnaire to see what manga to read!
+                </p>
+                <p>
+                    You can then keep track of what manga you've read and give them all ratings
+                </p>
+            </div>
+            <div id="mangaQuestionnaire">
+                <form id="questionnaire">
+                    <br>
+                    <h3>What theme do you prefer?</h3>
+                    <label for="themeF" class="form-label">Fantasy</label>
+                    <input id="themeF" type="radio" name="q1">
+                    <br>
+                    <label for="themeR" class="form-label">Real-life</label>
+                    <input id="themeR" type="radio" name="q1">
+                    <br>
+                    <h3>How do you like the pacing?</h3>
+                    <label for="pacingA" class="form-label">Fast paced Action</label>
+                    <input id="pacingA" type="radio" name="q2">
+                    <br>
+                    <label for="pacingP" class="form-label">Slow but dense plot</label>
+                    <input id="pacingP" type="radio" name="q2">
+                    <br>
+                    <h3>How are you feeling?</h3>
+                    <label for="feelingsG" class="form-label">Happy</label>
+                    <input id="feelingsG" type="radio" name="q3">
+                    <br>
+                    <label for="feelingsB" class="form-label">Unfulfilled</label>
+                    <input id="feelingsB" type="radio" name="q3">
+                    <br>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                    <br>
+                </form>
+                <!-- <form id="mangaForm">
+                    <label for="mangaName">Manga Name</label>
+                    <input id="mangaName" type="text">
+                    <label for="mangaRead">Read Status</label>
+                    <input id="mangaRead" type="text">
+                    <label for="mangaRating">Rating</label>
+                    <input id="mangaRating" type="number">
+                    <label for="mangaOpt">Option Number</label>
+                    <input id="mangaOpt" type="number">
+                    <button type="submit">Submit</button>
+                </form> -->
+            </div>
+        </section>
+        <section class="col-9">
+            <div id = mangaBase class="card-group row row-cols-3 g-4">
+                
+            </div>
+        </section>
     </main>
     <script src="manga.js"></script>
 </body>
